@@ -1,0 +1,168 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-the-auction-bidding-feature-entirely-including-any-auction-navigation-pages-backend-endpoints-data-models-and-ui-copy-that-references-auctions-bidding-or-user-registration-for-bidding",
+      "featureTitle": "Remove the auction/bidding feature entirely, including any auction navigation, pages, backend endpoints, data models, and UI copy that references auctions, bidding, or user registration for bidding.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/GalleryPage.tsx",
+        "frontend/src/pages/PaintingDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-purchase-contact-flow-based-on-a-displayed-email-address-show-the-contact-email-offgridsecrets-gmail-com-on-all-public-painting-listing-pages-and-painting-detail-pages-including-a-clear-call-to-action-link-using-a-mailto-link",
+      "featureTitle": "Implement a purchase/contact flow based on a displayed email address: show the contact email \"offgridsecrets@gmail.com\" on all public painting listing pages and painting detail pages, including a clear call-to-action link using a mailto: link.",
+      "files": [
+        "frontend/src/components/ContactEmailCTA.tsx",
+        "frontend/src/components/PaintingCard.tsx",
+        "frontend/src/constants/contact.ts",
+        "frontend/src/pages/PaintingDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-core-public-gallery-for-the-site-titled-dark-predictions-paintings-a-home-gallery-page-that-lists-all-paintings-for-sale-and-a-detail-view-per-painting-showing-image-s-title-description-and-price-plus-the-purchase-contact-email",
+      "featureTitle": "Build the core public gallery for the site titled \"Dark Predictions Paintings\": a home/gallery page that lists all paintings for sale, and a detail view per painting showing image(s), title, description, and price, plus the purchase contact email.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/pages/GalleryPage.tsx",
+        "frontend/src/pages/PaintingDetailPage.tsx",
+        "frontend/src/utils/format.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-admin-dashboard-that-allows-the-admin-to-create-edit-and-delete-painting-listings-with-fields-title-description-price-and-image-s-the-dashboard-must-display-the-admin-contact-email-offgridsecrets-gmail-com-in-the-admin-ui",
+      "featureTitle": "Implement an admin dashboard that allows the admin to create, edit, and delete painting listings with fields: title, description, price, and image(s). The dashboard must display the admin contact email \"offgridsecrets@gmail.com\" in the admin UI.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/admin/AdminPaintingForm.tsx",
+        "frontend/src/components/admin/AdminPaintingList.tsx",
+        "frontend/src/pages/AdminDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-mission-statement-section-on-the-public-site-stating-that-proceeds-support-building-and-developing-affordable-modern-housing-for-the-local-community",
+      "featureTitle": "Add a mission statement section on the public site stating that proceeds support building and developing affordable modern housing for the local community.",
+      "files": [
+        "frontend/src/components/MissionStatement.tsx",
+        "frontend/src/pages/GalleryPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-authentication-for-accessing-the-admin-dashboard-using-internet-identity-no-email-based-login-restrict-all-admin-only-backend-methods-create-update-delete-paintings-so-they-can-only-be-called-by-authenticated-admin-identity-identities-configured-for-the-app",
+      "featureTitle": "Add authentication for accessing the admin dashboard using Internet Identity (no email-based login). Restrict all admin-only backend methods (create/update/delete paintings) so they can only be called by authenticated admin identity/identities configured for the app.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/AccessDeniedScreen.tsx",
+        "frontend/src/components/auth/AdminRouteGuard.tsx",
+        "frontend/src/components/auth/LoginButton.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/hooks/useAdminAccess.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-and-apply-a-cohesive-visual-theme-suitable-for-a-premium-one-of-a-kind-painting-gallery-consistent-typography-spacing-and-color-system-use-a-distinct-style-e-g-dark-editorial-noir-gallery-aesthetic-and-apply-it-consistently-across-the-public-site-and-admin-dashboard-do-not-use-a-blue-purple-primary-palette",
+      "featureTitle": "Create and apply a cohesive visual theme suitable for a premium, one-of-a-kind painting gallery (consistent typography, spacing, and color system). Use a distinct style (e.g., dark editorial/noir gallery aesthetic) and apply it consistently across the public site and admin dashboard; do not use a blue/purple primary palette.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/AdminDashboardPage.tsx",
+        "frontend/src/pages/GalleryPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

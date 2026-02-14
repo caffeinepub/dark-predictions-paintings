@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website for selling one-of-a-kind paintings: public gallery/listings with contact email for purchases, plus an admin dashboard to upload/manage paintings. No auction/bidding or user registration.",
+  "architectural_notes": [
+    "No auction feature; no user registration/login required. Purchases handled via direct email contact (offgridsecrets@gmail.com).",
+    "Admin access associated with offgridsecrets@gmail.com."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimalist wordmark logo on transparent background, dark editorial style (dark-predictions-wordmark.dim_1200x300.png)\n- Abstract dark textured hero background suitable for an art gallery landing section (gallery-hero-texture.dim_2400x1350.png)",
+  "existing_features": [
+    {
+      "id": "feature-remove-the-auction-bidding-feature-entirely-including-any-auction-navigation-pages-backend-endpoints-data-models-and-ui-copy-that-references-auctions-bidding-or-user-registration-for-bidding",
+      "title": "Remove the auction/bidding feature entirely, including any auction navigation, pages, backend endpoints, data models, and UI copy that references auctions, bidding, or user registration for bidding.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-purchase-contact-flow-based-on-a-displayed-email-address-show-the-contact-email-offgridsecrets-gmail-com-on-all-public-painting-listing-pages-and-painting-detail-pages-including-a-clear-call-to-action-link-using-a-mailto-link",
+      "title": "Implement a purchase/contact flow based on a displayed email address: show the contact email \"offgridsecrets@gmail.com\" on all public painting listing pages and painting detail pages, including a clear call-to-action link using a mailto: link.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-core-public-gallery-for-the-site-titled-dark-predictions-paintings-a-home-gallery-page-that-lists-all-paintings-for-sale-and-a-detail-view-per-painting-showing-image-s-title-description-and-price-plus-the-purchase-contact-email",
+      "title": "Build the core public gallery for the site titled \"Dark Predictions Paintings\": a home/gallery page that lists all paintings for sale, and a detail view per painting showing image(s), title, description, and price, plus the purchase contact email.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-admin-dashboard-that-allows-the-admin-to-create-edit-and-delete-painting-listings-with-fields-title-description-price-and-image-s-the-dashboard-must-display-the-admin-contact-email-offgridsecrets-gmail-com-in-the-admin-ui",
+      "title": "Implement an admin dashboard that allows the admin to create, edit, and delete painting listings with fields: title, description, price, and image(s). The dashboard must display the admin contact email \"offgridsecrets@gmail.com\" in the admin UI.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-mission-statement-section-on-the-public-site-stating-that-proceeds-support-building-and-developing-affordable-modern-housing-for-the-local-community",
+      "title": "Add a mission statement section on the public site stating that proceeds support building and developing affordable modern housing for the local community.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-authentication-for-accessing-the-admin-dashboard-using-internet-identity-no-email-based-login-restrict-all-admin-only-backend-methods-create-update-delete-paintings-so-they-can-only-be-called-by-authenticated-admin-identity-identities-configured-for-the-app",
+      "title": "Add authentication for accessing the admin dashboard using Internet Identity (no email-based login). Restrict all admin-only backend methods (create/update/delete paintings) so they can only be called by authenticated admin identity/identities configured for the app.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-and-apply-a-cohesive-visual-theme-suitable-for-a-premium-one-of-a-kind-painting-gallery-consistent-typography-spacing-and-color-system-use-a-distinct-style-e-g-dark-editorial-noir-gallery-aesthetic-and-apply-it-consistently-across-the-public-site-and-admin-dashboard-do-not-use-a-blue-purple-primary-palette",
+      "title": "Create and apply a cohesive visual theme suitable for a premium, one-of-a-kind painting gallery (consistent typography, spacing, and color system). Use a distinct style (e.g., dark editorial/noir gallery aesthetic) and apply it consistently across the public site and admin dashboard; do not use a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create public-facing site for “Dark Predictions Paintings” to showcase paintings for sale (listings with title, description, price, images).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Admin dashboard to upload, title, describe, price, and manage painting listings using the admin email offgridsecrets@gmail.com.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Remove auction/bidding section and instead display contact email offgridsecrets@gmail.com for users to email to buy.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Include mission statement: proceeds support building/developing affordable modern housing for the local community.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Dark Predictions Paintings",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

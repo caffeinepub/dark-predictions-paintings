@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup for gallery, painting detail, and admin routes with layout wrapper including header and footer.",
+  "frontend/src/pages/GalleryPage.tsx": "Public gallery page displaying hero section with background texture, mission statement, and grid of painting cards fetched from backend.",
+  "frontend/src/pages/PaintingDetailPage.tsx": "Painting detail page showing image carousel, title, description, price, and contact email CTA with navigation back to gallery.",
+  "frontend/src/pages/AdminDashboardPage.tsx": "Admin dashboard for managing paintings with create/edit/delete functionality, displaying admin contact email and painting list.",
+  "frontend/src/components/PaintingCard.tsx": "Reusable painting card component displaying image, title, description, and price with hover effects and link to detail page.",
+  "frontend/src/components/ContactEmailCTA.tsx": "Contact email call-to-action component with mailto link pre-filled with painting inquiry details.",
+  "frontend/src/components/MissionStatement.tsx": "Mission statement section explaining that proceeds support affordable housing development for the local community.",
+  "frontend/src/components/layout/Header.tsx": "Site header with wordmark logo, admin navigation for authenticated admins, and login button.",
+  "frontend/src/components/layout/Footer.tsx": "Site footer with contact information, mission statement, and Caffeine.ai attribution with UTM tracking.",
+  "frontend/src/components/auth/LoginButton.tsx": "Internet Identity login/logout button with loading states and query cache clearing on logout.",
+  "frontend/src/components/auth/AdminRouteGuard.tsx": "Route guard component that checks authentication and admin authorization before rendering admin pages.",
+  "frontend/src/components/auth/AccessDeniedScreen.tsx": "Access denied screen shown to non-admin users attempting to access admin areas with login option.",
+  "frontend/src/components/admin/AdminPaintingList.tsx": "Admin table view of paintings with edit/delete actions and confirmation dialog for deletions.",
+  "frontend/src/components/admin/AdminPaintingForm.tsx": "Form component for creating and editing paintings with image upload, title, description, and price fields.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including fetching paintings, adding, updating, deleting, and checking user roles with proper UserRole enum usage.",
+  "frontend/src/hooks/useAdminAccess.ts": "Custom hook that combines authentication state and user role to determine admin access permissions using UserRole enum for type-safe comparisons.",
+  "frontend/src/constants/contact.ts": "Contact email constant and mailto link builder utility for consistent email handling across the app.",
+  "frontend/src/utils/format.ts": "Utility function to format bigint price values as USD currency strings.",
+  "frontend/src/index.css": "Global styles with noir gallery design system using OKLCH colors, dark editorial aesthetic with monochromatic palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter and Playfair Display) and extended theme matching the noir design system."
+}

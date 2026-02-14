@@ -1,0 +1,165 @@
+{
+  "kind": "build_request",
+  "title": "Dark Predictions Paintings — remove auctions, add contact-email purchase flow, and admin painting management",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Remove the auction/bidding feature entirely, including any auction navigation, pages, backend endpoints, data models, and UI copy that references auctions, bidding, or user registration for bidding.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Ok cut out the auction part and list my email instead for users to email me to buy. “offgridsecrets@gmail.com” and same email for admin dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is no auction/bidding section visible anywhere in the UI (no routes, menus, buttons, or labels).",
+        "Backend has no auction/bid-related types, state, or public methods.",
+        "No user registration flow for bidding exists."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a purchase/contact flow based on a displayed email address: show the contact email \"offgridsecrets@gmail.com\" on all public painting listing pages and painting detail pages, including a clear call-to-action link using a mailto: link.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "list my email instead for users to email me to buy. “offgridsecrets@gmail.com”"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Every painting card and/or painting detail view displays \"offgridsecrets@gmail.com\" as the contact email for purchases.",
+        "The email is clickable and opens the user’s email client via a mailto: link.",
+        "User-facing text is in English and does not mention auctions/bidding."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build the core public gallery for the site titled \"Dark Predictions Paintings\": a home/gallery page that lists all paintings for sale, and a detail view per painting showing image(s), title, description, and price, plus the purchase contact email.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Title of site “Dark Predictions Paintings”"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The site displays the title \"Dark Predictions Paintings\" prominently (e.g., header and browser title).",
+        "A public gallery view lists paintings pulled from the backend.",
+        "A painting detail view exists and shows title, description, price, and image(s)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement an admin dashboard that allows the admin to create, edit, and delete painting listings with fields: title, description, price, and image(s). The dashboard must display the admin contact email \"offgridsecrets@gmail.com\" in the admin UI.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2"
+        ],
+        "quotes": [
+          "admin dashboard that allows me the ability to upload , title and describe and price each painting.",
+          "and same email for admin dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin can add a new painting with title, description, price, and at least one image.",
+        "Admin can edit title/description/price/images for an existing painting.",
+        "Admin can delete an existing painting.",
+        "The admin dashboard UI shows \"offgridsecrets@gmail.com\" (as a displayed contact/admin email)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a mission statement section on the public site stating that proceeds support building and developing affordable modern housing for the local community.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "and the money raised is going to build and develop affordable modern housing for my local community."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A visible mission statement is present on the public site in English and clearly communicates the proceeds’ purpose."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add authentication for accessing the admin dashboard using Internet Identity (no email-based login). Restrict all admin-only backend methods (create/update/delete paintings) so they can only be called by authenticated admin identity/identities configured for the app.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "same email for admin dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin routes/pages require Internet Identity login to access.",
+        "Non-admin users cannot call create/update/delete painting methods (backend enforces authorization).",
+        "The app does not implement email-based authentication, registration, verification, or emailing features."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create and apply a cohesive visual theme suitable for a premium, one-of-a-kind painting gallery (consistent typography, spacing, and color system). Use a distinct style (e.g., dark editorial/noir gallery aesthetic) and apply it consistently across the public site and admin dashboard; do not use a blue/purple primary palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make me a million dollar design and function website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Public pages and admin pages share a consistent design system (colors, type scale, components).",
+        "Primary palette avoids blue/purple as the dominant brand colors.",
+        "Design feels gallery/premium and is consistently applied across navigation, cards, and forms."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "Do not modify files under frontend immutable paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui); compose/consume them instead.",
+    "Do not implement email-based authentication/registration or any email-sending functionality; only display the provided email address as text/link."
+  ],
+  "nonGoals": [
+    "Payment processing/checkout (e.g., Stripe) is out of scope.",
+    "Shipping, tax calculation, or order management workflows are out of scope.",
+    "User accounts, profiles, wishlists, or bidding/auction mechanics are out of scope."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimalist wordmark logo on transparent background, dark editorial style (dark-predictions-wordmark.dim_1200x300.png)",
+      "Abstract dark textured hero background suitable for an art gallery landing section (gallery-hero-texture.dim_2400x1350.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "User-facing text should be in English."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [
+      "Admin/purchase contact email to display: offgridsecrets@gmail.com"
+    ],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

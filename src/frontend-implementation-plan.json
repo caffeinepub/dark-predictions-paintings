@@ -1,0 +1,263 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Dark Predictions Paintings — premium gallery + email purchase CTA + II-protected admin management",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Remove all auction/bidding UX from the frontend (routes, navigation, and copy) and ensure no public UI implies bidding or registration for bidding.",
+      "acceptanceCriteria": [
+        "There is no auction/bidding section visible anywhere in the UI (no routes, menus, buttons, or labels).",
+        "Backend has no auction/bid-related types, state, or public methods.",
+        "No user registration flow for bidding exists."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the application shell and routing for the gallery and admin areas only; ensure there are no routes, navigation links, buttons, or copy that reference auctions, bidding, or bidding registration."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "create",
+          "description": "Create a top navigation/header component that only links to the public gallery and (optionally) the admin area; ensure labels and UI copy do not mention auctions/bidding."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "create",
+          "description": "Implement the public gallery page copy and CTAs to focus on direct purchase/contact via email only; ensure no auction/bidding language appears."
+        },
+        {
+          "path": "frontend/src/pages/PaintingDetailPage.tsx",
+          "operation": "create",
+          "description": "Implement the painting detail page copy and CTAs to focus on direct purchase/contact via email only; ensure no auction/bidding language appears."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Show a mailto purchase/contact CTA with the email offgridsecrets@gmail.com on all painting listing and detail views.",
+      "acceptanceCriteria": [
+        "Every painting card and/or painting detail view displays \"offgridsecrets@gmail.com\" as the contact email for purchases.",
+        "The email is clickable and opens the user’s email client via a mailto: link.",
+        "User-facing text is in English and does not mention auctions/bidding."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/constants/contact.ts",
+          "operation": "create",
+          "description": "Add a shared constant for the purchase/admin contact email set to \"offgridsecrets@gmail.com\" and helper to build a mailto link."
+        },
+        {
+          "path": "frontend/src/components/ContactEmailCTA.tsx",
+          "operation": "create",
+          "description": "Create a reusable purchase CTA component that displays \"offgridsecrets@gmail.com\" and links via mailto:. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PaintingCard.tsx",
+          "operation": "create",
+          "description": "Create painting card UI for the gallery list, including the ContactEmailCTA so the email appears on each listing card. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PaintingDetailPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the detail view includes the ContactEmailCTA prominently and uses English, non-auction copy."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build the public gallery (home) and painting detail views for “Dark Predictions Paintings”, sourcing paintings from the backend and showing images, title, description, and price.",
+      "acceptanceCriteria": [
+        "The site displays the title \"Dark Predictions Paintings\" prominently (e.g., header and browser title).",
+        "A public gallery view lists paintings pulled from the backend.",
+        "A painting detail view exists and shows title, description, price, and image(s)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Confirm the browser title is \"Dark Predictions Paintings\" and keep the document language English."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire routes for the public gallery (home) and painting detail view; ensure the header prominently displays \"Dark Predictions Paintings\" and that navigation works end-to-end."
+        },
+        {
+          "path": "frontend/src/hooks/usePaintings.ts",
+          "operation": "create",
+          "description": "Add React Query hooks to fetch the public list of paintings via the backend actor (getAllPaintings) and manage loading/error states."
+        },
+        {
+          "path": "frontend/src/hooks/usePainting.ts",
+          "operation": "create",
+          "description": "Add a React Query hook to fetch a single painting by id via the backend actor (getPainting) and manage loading/error states."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Render the gallery list sourced from the backend (getAllPaintings), including painting cards with image preview(s), title, and price, and link each card to the detail route."
+        },
+        {
+          "path": "frontend/src/pages/PaintingDetailPage.tsx",
+          "operation": "modify",
+          "description": "Render painting title, description, price, and image(s) sourced from the backend (getPainting), plus the purchase contact email CTA."
+        },
+        {
+          "path": "frontend/src/utils/format.ts",
+          "operation": "create",
+          "description": "Add helpers for formatting price (bigint) for display and any shared text formatting needed for the gallery/detail UI."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create an admin dashboard UI to add/edit/delete paintings (title, description, price, images) and display the admin contact email.",
+      "acceptanceCriteria": [
+        "Admin can add a new painting with title, description, price, and at least one image.",
+        "Admin can edit title/description/price/images for an existing painting.",
+        "Admin can delete an existing painting.",
+        "The admin dashboard UI shows \"offgridsecrets@gmail.com\" (as a displayed contact/admin email)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminDashboardPage.tsx",
+          "operation": "create",
+          "description": "Create the admin dashboard page layout, show the admin contact email \"offgridsecrets@gmail.com\", list existing paintings, and provide create/edit/delete actions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/admin/AdminPaintingForm.tsx",
+          "operation": "create",
+          "description": "Create a form component to create/edit a painting with fields title, description, price, and image(s), including client-side validation and image upload UI using ExternalBlob. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/admin/AdminPaintingList.tsx",
+          "operation": "create",
+          "description": "Create an admin list/table view of paintings with edit/delete controls, reusing painting display patterns and showing image previews. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useAdminPaintings.ts",
+          "operation": "create",
+          "description": "Add React Query mutations for addPainting, updatePainting, and deletePainting with cache invalidation for the paintings list/detail; handle authorization errors gracefully."
+        },
+        {
+          "path": "frontend/src/utils/blob.ts",
+          "operation": "create",
+          "description": "Add helpers to convert browser File inputs to ExternalBlob (fromBytes) and to read direct image URLs (getDirectURL) for previews; use the blob-storage ExternalBlob capability for image handling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the /admin route and wire navigation entry points so the admin dashboard is reachable (but guarded per REQ-6)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add a visible mission statement on the public site describing that proceeds support affordable modern housing for the local community.",
+      "acceptanceCriteria": [
+        "A visible mission statement is present on the public site in English and clearly communicates the proceeds’ purpose."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MissionStatement.tsx",
+          "operation": "create",
+          "description": "Create a mission statement section component with English copy stating that proceeds support building and developing affordable modern housing for the local community."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Place the MissionStatement section in a prominent location on the public gallery page (e.g., under hero/intro) while maintaining the premium gallery aesthetic."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Protect the admin dashboard with Internet Identity login and admin authorization checks; no email-based authentication.",
+      "acceptanceCriteria": [
+        "Admin routes/pages require Internet Identity login to access.",
+        "Non-admin users cannot call create/update/delete painting methods (backend enforces authorization).",
+        "The app does not implement email-based authentication, registration, verification, or emailing features."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/LoginButton.tsx",
+          "operation": "create",
+          "description": "Create a login/logout button using the existing useInternetIdentity hook; on logout, clear cached React Query data. Use the authorization component guidance for login UX. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useAdminAccess.ts",
+          "operation": "create",
+          "description": "Add a hook that checks authentication state and queries the backend actor (isCallerAdmin/getCallerUserRole) to determine admin access; expose loading/denied states and handle authorization traps gracefully."
+        },
+        {
+          "path": "frontend/src/components/auth/AdminRouteGuard.tsx",
+          "operation": "create",
+          "description": "Create a route guard wrapper that requires Internet Identity login and admin authorization to render admin pages; show an access denied screen otherwise. Use the authorization component guidance for access control UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/AccessDeniedScreen.tsx",
+          "operation": "create",
+          "description": "Create a simple access-denied UI for non-admin users attempting to view the admin dashboard, with a clear login/logout action and no email-based auth messaging. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Add the LoginButton to the global header and ensure the admin navigation entry routes through the AdminRouteGuard (no public access to admin UI)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the admin dashboard route with AdminRouteGuard so admin pages always require Internet Identity and admin authorization."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply a cohesive premium noir gallery theme across public and admin pages, avoiding blue/purple as dominant brand colors, and wire required generated brand assets into the UI.",
+      "acceptanceCriteria": [
+        "Public pages and admin pages share a consistent design system (colors, type scale, components).",
+        "Primary palette avoids blue/purple as the dominant brand colors.",
+        "Design feels gallery/premium and is consistently applied across navigation, cards, and forms."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styling with a dark editorial/noir design system using CSS variables compatible with Tailwind/shadcn tokens; avoid blue/purple as the dominant palette and apply consistent typography/spacing."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (fonts, radius, and token usage) to support the noir premium design system consistently across pages while avoiding a blue/purple primary."
+        },
+        {
+          "path": "frontend/public/assets/generated/dark-predictions-wordmark.dim_1200x300.png",
+          "operation": "create",
+          "description": "Add the generated minimalist wordmark logo asset as a static public file at the exact path specified."
+        },
+        {
+          "path": "frontend/public/assets/generated/gallery-hero-texture.dim_2400x1350.png",
+          "operation": "create",
+          "description": "Add the generated abstract dark textured hero background asset as a static public file at the exact path specified."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Wire the generated wordmark image from frontend/public/assets/generated/dark-predictions-wordmark.dim_1200x300.png into the header branding and apply the shared premium theme styles."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Wire the generated hero background image from frontend/public/assets/generated/gallery-hero-texture.dim_2400x1350.png into the gallery hero/intro section and apply the shared premium theme styles to gallery cards and layout."
+        },
+        {
+          "path": "frontend/src/pages/AdminDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Apply the same design system (colors/type/components) to admin forms, lists, and dialogs so admin feels consistent with the public gallery theme. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T21:30:43.719Z",
+  "summary": "Diff adds a new Motoko backend for paintings with admin-only CRUD, plus a new frontend gallery/admin app with Internet Identity-based access guard, a mailto contact CTA component, header/footer branding, and a dark theme. Some requested public email-display requirements are not clearly met in the listing cards/detail views based on the provided diff summary. Several non-requested user-profile/account-related backend features were added.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Show the contact email \"offgridsecrets@gmail.com\" on all public painting listing pages and painting detail pages, including a clear mailto: link CTA.",
+      "reason": "Painting listing card component shown in the diff does not display the email address or a mailto link, and the painting detail page implementation is not included in the diff summary to verify it meets the requirement.",
+      "evidence": [
+        "frontend/src/components/PaintingCard.tsx",
+        "frontend/src/components/ContactEmailCTA.tsx",
+        "frontend/src/pages/PaintingDetailPage (added but not shown in diff summary)"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Add a mission statement section on the public site stating that proceeds support building and developing affordable modern housing for the local community.",
+      "reason": "A MissionStatement component is added, but the diff summary does not show it being rendered on any public page (e.g., GalleryPage), so visibility on the public site cannot be confirmed.",
+      "evidence": [
+        "frontend/src/components/MissionStatement.tsx",
+        "frontend/src/pages/GalleryPage (added but not shown in diff summary)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile data model and profile query/update methods (getCallerUserProfile, getUserProfile, saveCallerUserProfile) with user permissions.",
+      "reason": "BuildRequest explicitly lists user accounts/profiles as out of scope (non-goals), but backend introduces userProfiles state and related public methods.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Initialization of access control via a secret URL parameter \"caffeineAdminToken\" and calling a backend method _initializeAccessControlWithSecret.",
+      "reason": "BuildRequest requires Internet Identity auth and admin-identity restriction, but does not request or describe a secret-token URL parameter flow for access control initialization.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Footer includes a promotional link to caffeine.ai with tracking parameters.",
+      "reason": "Not requested by BuildRequest requirements or acceptance criteria.",
+      "evidence": [
+        "frontend/src/components/layout/Footer.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.64,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ContactEmailCTA.tsx",
+    "frontend/src/components/MissionStatement.tsx",
+    "frontend/src/components/PaintingCard.tsx",
+    "frontend/src/components/admin/AdminPaintingForm.tsx",
+    "frontend/src/components/admin/AdminPaintingList.tsx",
+    "frontend/src/components/auth/AccessDeniedScreen.tsx",
+    "frontend/src/components/auth/AdminRouteGuard.tsx",
+    "frontend/src/components/auth/LoginButton.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/Header.tsx",
+    "frontend/src/constants/contact.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useAdminAccess.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AdminDashboardPage.tsx",
+    "frontend/src/pages/GalleryPage.tsx",
+    "frontend/src/pages/PaintingDetailPage.tsx",
+    "frontend/src/utils/format.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
