@@ -1,0 +1,49 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-in-the-adminpaintinglist-component-ensure-each-painting-row-displays-clearly-functional-edit-delete-and-mark-as-sold-available-action-buttons-the-edit-action-should-open-the-adminpaintingform-pre-populated-with-the-existing-painting-data-the-delete-action-should-show-a-confirmation-dialog-before-permanently-removing-the-painting-the-mark-as-sold-toggle-should-immediately-update-the-painting-s-sold-status",
+      "featureTitle": "In the AdminPaintingList component, ensure each painting row displays clearly functional Edit, Delete, and Mark as Sold/Available action buttons. The Edit action should open the AdminPaintingForm pre-populated with the existing painting data. The Delete action should show a confirmation dialog before permanently removing the painting. The Mark as Sold toggle should immediately update the painting's sold status.",
+      "files": [
+        "frontend/src/components/admin/AdminPaintingForm.tsx",
+        "frontend/src/components/admin/AdminPaintingList.tsx",
+        "frontend/src/pages/AdminDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-prominent-visual-sold-indicator-on-sold-paintings-in-both-the-public-gallery-and-the-painting-detail-page-this-should-include-a-bold-diagonal-sold-stamp-overlay-on-the-painting-s-primary-image-and-a-sold-badge-near-the-title-or-price-with-a-strikethrough-on-the-price-the-adminpaintinglist-table-should-also-show-a-clear-sold-available-status-label-per-row",
+      "featureTitle": "Display a prominent visual SOLD indicator on sold paintings in both the public gallery and the painting detail page. This should include a bold diagonal 'SOLD' stamp overlay on the painting's primary image and a SOLD badge near the title or price with a strikethrough on the price. The AdminPaintingList table should also show a clear sold/available status label per row.",
+      "files": [
+        "frontend/src/components/PaintingCard.tsx",
+        "frontend/src/components/admin/AdminPaintingList.tsx",
+        "frontend/src/pages/PaintingDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

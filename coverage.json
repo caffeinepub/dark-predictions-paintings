@@ -1,0 +1,67 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T12:12:41.950Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add backend support for updating an existing painting's fields (title, description, price, images, sold status) via an admin-only update function. Ensure delete and sold-status toggle operations are also available as admin-only backend calls.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "In the AdminPaintingList component, ensure each painting row displays clearly functional Edit, Delete, and Mark as Sold/Available action buttons. The Edit action should open the AdminPaintingForm pre-populated with the existing painting data. The Delete action should show a confirmation dialog before permanently removing the painting. The Mark as Sold toggle should immediately update the painting's sold status.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/admin/AdminPaintingList.tsx",
+          "frontend/src/components/admin/AdminPaintingForm.tsx",
+          "frontend/src/pages/AdminDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/admin/AdminPaintingList.tsx",
+          "frontend/src/components/admin/AdminPaintingForm.tsx",
+          "frontend/src/pages/AdminDashboardPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Display a prominent visual SOLD indicator on sold paintings in both the public gallery and the painting detail page. This should include a bold diagonal 'SOLD' stamp overlay on the painting's primary image and a SOLD badge near the title or price with a strikethrough on the price. The AdminPaintingList table should also show a clear sold/available status label per row.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PaintingCard.tsx",
+          "frontend/src/pages/PaintingDetailPage.tsx",
+          "frontend/src/components/admin/AdminPaintingList.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PaintingCard.tsx",
+          "frontend/src/pages/PaintingDetailPage.tsx",
+          "frontend/src/components/admin/AdminPaintingList.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/PaintingCard.tsx",
+    "frontend/src/components/admin/AdminPaintingForm.tsx",
+    "frontend/src/components/admin/AdminPaintingList.tsx",
+    "frontend/src/pages/AdminDashboardPage.tsx",
+    "frontend/src/pages/PaintingDetailPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

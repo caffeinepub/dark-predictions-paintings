@@ -1,0 +1,50 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T12:12:41.946Z",
+  "summary": "The diff implements most frontend requirements (REQ-2, REQ-3) and partially implements REQ-1 frontend-side hooks (useUpdatePainting, useDeletePainting, useTogglePaintingSold), but the critical backend file (backend/main.mo) is absent from the diff entirely. REQ-1 requires admin-only backend functions for update, delete, and sold-status toggle in the Motoko actor file, which cannot be verified from the provided changes.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Add backend support for updating an existing painting's fields (title, description, price, images, sold status) via an admin-only update function. Ensure delete and sold-status toggle operations are also available as admin-only backend calls. Non-admin callers must be rejected with an authorization error.",
+      "reason": "The diff contains no changes to backend/main.mo. All four acceptance criteria (update by ID, delete by ID, toggle sold by ID, non-admin rejection) require backend actor modifications that are not present in the diff.",
+      "evidence": []
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Mini SOLD stamp overlay on thumbnail images in the AdminPaintingList table and strikethrough title/price for sold rows with dimmed row styling",
+      "reason": "The build request only requires a clear sold/available status label per row in the AdminPaintingList. The additional thumbnail SOLD stamp and strikethrough title/price in the admin table go beyond the stated requirements.",
+      "evidence": [
+        "frontend/src/components/admin/AdminPaintingList.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Disabled ContactEmailCTA with a sold notice banner on PaintingDetailPage",
+      "reason": "The build request does not mention disabling the contact CTA or showing a sold notice banner on the detail page. Requirements only specify a SOLD badge and strikethrough price on the detail page.",
+      "evidence": [
+        "frontend/src/pages/PaintingDetailPage.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Sold count subtitle in AdminDashboardPage showing number of sold paintings",
+      "reason": "Displaying a sold-count indicator in the admin dashboard subtitle was not requested in any of the three requirements.",
+      "evidence": [
+        "frontend/src/pages/AdminDashboardPage.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.82,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/PaintingCard.tsx",
+    "frontend/src/components/admin/AdminPaintingForm.tsx",
+    "frontend/src/components/admin/AdminPaintingList.tsx",
+    "frontend/src/pages/AdminDashboardPage.tsx",
+    "frontend/src/pages/PaintingDetailPage.tsx",
+    "project_state.json"
+  ]
+}

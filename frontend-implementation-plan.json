@@ -1,0 +1,63 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Admin: Edit, Delete, and Mark Paintings as Sold with Visual Indicators",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Add Edit, Delete, and Mark as Sold/Available action buttons to AdminPaintingList with pre-populated form editing, confirmation dialogs, and immediate status updates",
+      "acceptanceCriteria": [
+        "Edit button opens the painting form with all existing fields pre-filled",
+        "Submitting the edit form updates the painting and refreshes the list",
+        "Delete button shows a confirmation dialog; confirming removes the painting from the list",
+        "Mark as Sold/Available button toggles the sold status and the UI reflects the new state immediately",
+        "All actions are only visible to authenticated admin users"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/admin/AdminPaintingList.tsx",
+          "operation": "modify",
+          "description": "Add Edit button that opens a dialog containing AdminPaintingForm pre-populated with the selected painting's data. Add a Mark as Sold/Available toggle button that calls the togglePaintingSoldStatus mutation and immediately reflects the new sold status in the table row. Ensure the existing Delete button with confirmation dialog remains functional. Wire the edit dialog to close on successful submission and refresh the painting list."
+        },
+        {
+          "path": "frontend/src/components/admin/AdminPaintingForm.tsx",
+          "operation": "modify",
+          "description": "Enhance the form to accept an optional painting prop for edit mode. When painting is provided, pre-populate all form fields (title, description, price, images) with the painting's existing data. Update the form submission logic to call useUpdatePainting mutation when in edit mode instead of useAddPainting. Ensure the form validates and handles image uploads correctly for both create and update operations."
+        },
+        {
+          "path": "frontend/src/pages/AdminDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Update the Paintings tab to support opening the AdminPaintingForm in edit mode when the Edit action is triggered from AdminPaintingList. Pass the selected painting data to the form dialog and handle the edit dialog state separately from the add dialog state. Ensure both add and edit dialogs can coexist without conflicts."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Display prominent visual SOLD indicators on sold paintings across public gallery, detail page, and admin list with diagonal stamp overlays, badges, and strikethrough prices",
+      "acceptanceCriteria": [
+        "Sold paintings in the public gallery grid show a diagonal SOLD stamp overlay on the image",
+        "Sold paintings show a SOLD badge and a strikethrough price on the PaintingCard",
+        "The PaintingDetailPage shows a SOLD badge and strikethrough price for sold paintings",
+        "The AdminPaintingList table clearly shows the sold/available status for each painting",
+        "Available paintings do not show any sold indicators"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PaintingCard.tsx",
+          "operation": "modify",
+          "description": "Enhance the existing SOLD overlay stamp on the image and SOLD badge with strikethrough price to ensure they are visually prominent. Verify that the diagonal SOLD stamp is bold and clearly visible over the painting image. Confirm that the SOLD badge appears near the title or price and that the price displays with a strikethrough when the painting is sold. Ensure available paintings do not show any sold indicators."
+        },
+        {
+          "path": "frontend/src/pages/PaintingDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add a prominent SOLD badge near the painting title or price section when the painting's sold status is true. Apply a strikethrough style to the price display for sold paintings. Ensure the badge is visually consistent with the PaintingCard SOLD badge and that available paintings display the price normally without any sold indicators."
+        },
+        {
+          "path": "frontend/src/components/admin/AdminPaintingList.tsx",
+          "operation": "modify",
+          "description": "Add a Status column to the paintings table that clearly displays either 'Sold' or 'Available' for each painting row. Style the status labels distinctly (e.g., different colors or badges) to make the sold/available state immediately apparent to admin users reviewing the list."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "kind": "build_request",
+  "title": "Admin: Edit, Delete, and Mark Paintings as Sold with Visual Indicators",
+  "projectName": "Dark Predictions Paintings",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add backend support for updating an existing painting's fields (title, description, price, images, sold status) via an admin-only update function. Ensure delete and sold-status toggle operations are also available as admin-only backend calls.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "edit any current painting, delete the post, or label it as sold"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin can update all fields of an existing painting by ID",
+        "Admin can delete a painting by ID",
+        "Admin can toggle or set the sold status of a painting by ID",
+        "Non-admin callers are rejected with an authorization error for all three operations"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "In the AdminPaintingList component, ensure each painting row displays clearly functional Edit, Delete, and Mark as Sold/Available action buttons. The Edit action should open the AdminPaintingForm pre-populated with the existing painting data. The Delete action should show a confirmation dialog before permanently removing the painting. The Mark as Sold toggle should immediately update the painting's sold status.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "admin to be able to edit any current painting, delete the post, or label it as sold"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Edit button opens the painting form with all existing fields pre-filled",
+        "Submitting the edit form updates the painting and refreshes the list",
+        "Delete button shows a confirmation dialog; confirming removes the painting from the list",
+        "Mark as Sold/Available button toggles the sold status and the UI reflects the new state immediately",
+        "All actions are only visible to authenticated admin users"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Display a prominent visual SOLD indicator on sold paintings in both the public gallery and the painting detail page. This should include a bold diagonal 'SOLD' stamp overlay on the painting's primary image and a SOLD badge near the title or price with a strikethrough on the price. The AdminPaintingList table should also show a clear sold/available status label per row.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "label it as sold with visual graphics to show users it's sold"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Sold paintings in the public gallery grid show a diagonal SOLD stamp overlay on the image",
+        "Sold paintings show a SOLD badge and a strikethrough price on the PaintingCard",
+        "The PaintingDetailPage shows a SOLD badge and strikethrough price for sold paintings",
+        "The AdminPaintingList table clearly shows the sold/available status for each painting",
+        "Available paintings do not show any sold indicators"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "All backend logic must remain in the single main actor file (backend/main.mo)",
+    "Edit, delete, and sold-toggle operations must be restricted to admin-role principals only"
+  ],
+  "nonGoals": [
+    "Public users cannot edit, delete, or change sold status of paintings",
+    "No bulk operations (e.g., bulk delete or bulk mark as sold)",
+    "No image hosting changes or external media integrations"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup for gallery, painting detail, and admin routes with layout wrapper including header and footer.",
+  "frontend/src/pages/GalleryPage.tsx": "Public gallery page with hero headline and subtitle sourced dynamically from backend site content with loading skeletons and default fallbacks.",
+  "frontend/src/pages/PaintingDetailPage.tsx": "Painting detail page with a prominent SOLD badge (with Ban icon) near the title, strikethrough price with sold label, a destructive-styled sold notice banner, SOLD stamp overlay on the image, and disabled ContactEmailCTA when the painting is sold.",
+  "frontend/src/pages/AdminDashboardPage.tsx": "Admin dashboard with tabbed Paintings/Site Content interface; shows sold count in subtitle, edit dialog with painting title in header, and wires AdminPaintingList edit/delete/sold-toggle actions to the form dialog.",
+  "frontend/src/components/PaintingCard.tsx": "Painting card with a bold diagonal SOLD stamp overlay on the image (with brightness dimming), a red SOLD badge in the card body, strikethrough price with \"No longer available\" label for sold paintings, and normal price display for available paintings.",
+  "frontend/src/components/ContactEmailCTA.tsx": "Contact CTA that dynamically fetches the contact email from site content, accepts a disabled prop to show a \"This painting has been sold\" message instead of the email button.",
+  "frontend/src/components/MissionStatement.tsx": "Mission statement section that fetches and displays the mission statement text dynamically from backend site content with a loading skeleton and default fallback.",
+  "frontend/src/components/layout/Header.tsx": "Site header with a text wordmark replacing the logo image, admin navigation for authenticated admins, and login button.",
+  "frontend/src/components/layout/Footer.tsx": "Site footer that dynamically fetches the contact email from backend site content, falling back to the CONTACT_EMAIL constant.",
+  "frontend/src/components/auth/LoginButton.tsx": "Internet Identity login/logout button with loading states and query cache clearing on logout.",
+  "frontend/src/components/auth/AdminRouteGuard.tsx": "Route guard component that checks authentication and admin authorization before rendering admin pages.",
+  "frontend/src/components/auth/AccessDeniedScreen.tsx": "Access denied screen shown to non-admin users attempting to access admin areas with login option.",
+  "frontend/src/components/admin/AdminPaintingList.tsx": "Admin table view of paintings with enhanced edit/delete/sold-toggle actions, mini SOLD stamp on thumbnail images, strikethrough title and price for sold rows, dimmed row styling for sold paintings, improved delete confirmation dialog with loading state, and SOLD/Available status badges with icons.",
+  "frontend/src/components/admin/AdminPaintingForm.tsx": "Form component for creating and editing paintings with image upload (progress bars), title, description, and price fields; supports both create and edit modes with pre-populated values, dollar-sign prefix on price input, and improved upload area UX.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including paintings CRUD, sold status toggle, site content fetch/update, user role, and user profile queries with proper cache invalidation.",
+  "frontend/src/hooks/useAdminAccess.ts": "Custom hook that combines authentication state and user role to determine admin access permissions using UserRole enum for type-safe comparisons.",
+  "frontend/src/constants/contact.ts": "Contact email constant serving as a fallback default; updated comment notes the email is now editable via the admin panel.",
+  "frontend/src/utils/format.ts": "Utility function to format bigint price values as USD currency strings.",
+  "frontend/src/index.css": "Global styles with noir gallery design system using OKLCH colors, dark editorial aesthetic with monochromatic palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter and Playfair Display) and extended theme matching the noir design system.",
+  "frontend/src/components/admin/SiteContentForm.tsx": "New form component using React Hook Form to edit site content fields (hero headline, hero subtitle, mission statement, contact email) with validation, pre-populated values from backend, and save/loading states."
+}

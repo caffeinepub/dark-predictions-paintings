@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Art portfolio/gallery web app with admin panel. Admin can manage paintings (edit, delete, mark as sold with visual indicator). Live at Version 4.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-in-the-adminpaintinglist-component-ensure-each-painting-row-displays-clearly-functional-edit-delete-and-mark-as-sold-available-action-buttons-the-edit-action-should-open-the-adminpaintingform-pre-populated-with-the-existing-painting-data-the-delete-action-should-show-a-confirmation-dialog-before-permanently-removing-the-painting-the-mark-as-sold-toggle-should-immediately-update-the-painting-s-sold-status",
+      "title": "In the AdminPaintingList component, ensure each painting row displays clearly functional Edit, Delete, and Mark as Sold/Available action buttons. The Edit action should open the AdminPaintingForm pre-populated with the existing painting data. The Delete action should show a confirmation dialog before permanently removing the painting. The Mark as Sold toggle should immediately update the painting's sold status.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-prominent-visual-sold-indicator-on-sold-paintings-in-both-the-public-gallery-and-the-painting-detail-page-this-should-include-a-bold-diagonal-sold-stamp-overlay-on-the-painting-s-primary-image-and-a-sold-badge-near-the-title-or-price-with-a-strikethrough-on-the-price-the-adminpaintinglist-table-should-also-show-a-clear-sold-available-status-label-per-row",
+      "title": "Display a prominent visual SOLD indicator on sold paintings in both the public gallery and the painting detail page. This should include a bold diagonal 'SOLD' stamp overlay on the painting's primary image and a SOLD badge near the title or price with a strikethrough on the price. The AdminPaintingList table should also show a clear sold/available status label per row.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Admin ability to edit any current painting listing, delete a painting post, or label it as sold — with visual graphics (e.g., SOLD badge/overlay) shown to public users.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add backend support for updating an existing painting's fields (title, description, price, images, sold status) via an admin-only update function. Ensure delete and sold-status toggle operations are also available as admin-only backend calls.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Promote current draft to live",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
